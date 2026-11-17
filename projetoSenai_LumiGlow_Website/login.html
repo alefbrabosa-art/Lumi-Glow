@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Entrar | Lumi Glow</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style/login.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO IGUAL AO DO CADASTRO -->
+    <header class="topo-site">
+        <div class="topo-marca">
+            <span>✧</span>
+            <strong>LUMI GLOW</strong>
+        </div>
+
+        <nav aria-label="Navegação principal">
+            <ul class="menu-links">
+                <li><a href="cadastro.html#secao-cadastro">Novo Cadastro</a></li>
+                <li><a href="cadastro.html#secao-lista">Equipe Cadastrada</a></li>
+                <li><a href="login.html" class="link-login ativo">Entrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-container">
+
+        <!-- LADO DA IMAGEM -->
+        <section class="login-imagem" aria-label="Apresentação visual Lumi Glow">
+
+            <img src="images/glow_login.jfif" alt="Imagem de apresentação Lumi Glow">
+
+            <div class="imagem-texto">
+                <h1>LUMI GLOW</h1>
+                <p>SISTEMA DE GESTÃO ESTÉTICA</p>
+            </div>
+
+        </section>
+
+        <!-- LADO DO LOGIN -->
+        <section class="login-conteudo" id="secao-login">
+
+            <div class="login-formulario">
+
+                <h2>Bem-vindo(a)!</h2>
+                <p class="descricao">Acesse sua conta para continuar.</p>
+
+                <form id="formLogin" action="#" method="post">
+
+                    <div class="grupo-campo">
+                        <label for="usuario">Usuário ou e-mail</label>
+                        <div class="campo">
+                            <span class="icone" aria-hidden="true">♙</span>
+                            <input
+                                type="text"
+                                id="usuario"
+                                name="usuario"
+                                placeholder="Usuário ou e-mail"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="senha">Senha</label>
+                        <div class="campo">
+                            <span class="icone" aria-hidden="true">⚿</span>
+                            <input
+                                type="password"
+                                id="senha"
+                                name="senha"
+                                placeholder="Senha"
+                                required
+                            >
+
+                            <button type="button" class="mostrar-senha" id="mostrarSenha" aria-label="Mostrar ou ocultar senha">
+                                ◉
+                            </button>
+                        </div>
+                    </div>
+
+                    <a href="recuperar-senha.html" class="esqueceu-senha">
+                        Esqueceu sua senha?
+                    </a>
+
+                    <button type="submit" class="botao-entrar">
+                        Entrar
+                    </button>
+
+                    <p id="mensagemFeedback" class="feedback" role="status" aria-live="polite"></p>
+
+                </form>
+
+                <div class="divisor">
+                    <span></span>
+                    <p>ou</p>
+                    <span></span>
+                </div>
+
+                <button type="button" class="google" id="btnGoogle" aria-label="Entrar com Google">
+                    <span>G</span>
+                </button>
+
+                <p class="cadastro">
+                    Não tem uma conta?
+                    <a href="cadastro.html">Cadastre-se</a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ IGUAL AO DO CADASTRO -->
+    <footer class="rodape-site">
+        <span>✧</span>
+        <p>Lumi Glow — Cuidando de cada detalhe da sua clínica.</p>
+    </footer>
+
+    <script src="script/login.js"></script>
+    <script>
+        const USERS_KEY = 'lumiglow:usuarios';
+        const sha = async s => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)))]
+            .map(b => b.toString(16).padStart(2, '0')).join('');
+
+        function getUsuarios() {
+            let lista = [];
+            try { lista = JSON.parse(localStorage.getItem(USERS_KEY) || '[]'); } catch { lista = []; }
+            if (!Array.isArray(lista)) lista = [];
+            const antigo = JSON.parse(localStorage.getItem('lumiglow:auth') || 'null');
+            if (antigo?.u && antigo?.hs && !lista.some(x => x.u.toLowerCase() === antigo.u.toLowerCase())) {
+                lista.push({ u: antigo.u, hs: antigo.hs, nome: antigo.u, cargo: 'Administradora', foto: '' });
+                localStorage.setItem(USERS_KEY, JSON.stringify(lista));
+            }
+            return lista;
+        }
+
+        document.getElementById('formLogin').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            const loginDigitado = document.getElementById('usuario').value.trim().toLowerCase();
+            const s = document.getElementById('senha').value;
+            const feedback = document.getElementById('mensagemFeedback');
+
+            const usuarios = getUsuarios();
+            const conta = usuarios.find(x =>
+                x.u.toLowerCase() === loginDigitado ||
+                (x.email && x.email.toLowerCase() === loginDigitado) ||
+                (x.nome && x.nome.toLowerCase() === loginDigitado)
+            );
+
+            if (!conta) {
+                feedback.style.color = '#b42318';
+                feedback.textContent = 'Conta não encontrada. Crie uma conta em Cadastre-se.';
+                return;
+            }
+
+            const hashDigitado = await sha(conta.u + ':' + s);
+            if (conta.hs !== hashDigitado) {
+                feedback.style.color = '#b42318';
+                feedback.textContent = 'Usuário/e-mail ou senha incorretos.';
+                return;
+            }
+
+            feedback.style.color = '#15803d';
+            feedback.textContent = 'Login realizado! Entrando no sistema...';
+
+            sessionStorage.setItem('lumiglow:sessao', '1');
+            sessionStorage.setItem('lumiglow:usuarioNome', conta.u);
+            window.location.href = 'funcionalidades/sistema.html';
+        }, true);
+    </script>
+
+</body>
+</html>

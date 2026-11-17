@@ -1,0 +1,395 @@
+/* CORES E FONTES */
+
+:root {
+    --champagne: #F8F2EC;
+    --bege: #D7C2A7;
+    --dourado: #C9A96E;
+    --taupe: #8F7E6B;
+    --texto: #5C4D3C;
+    --branco: #FFFFFF;
+    --borda: #E9DED2;
+}
+
+/* CONFIGURAÇÕES GERAIS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--champagne);
+    color: var(--taupe);
+    line-height: 1.5;
+}
+
+/* CABEÇALHO E NAVEGAÇÃO (IGUAL AO CADASTRO) */
+
+.topo-site {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 2.5rem;
+    background-color: var(--branco);
+    border-bottom: 1px solid var(--borda);
+}
+
+.topo-marca {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: var(--texto);
+}
+
+.topo-marca span {
+    color: var(--dourado);
+    font-size: 1.25rem;
+}
+
+.menu-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.menu-links a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--taupe);
+    transition: color 0.25s;
+}
+
+.menu-links a:hover {
+    color: var(--dourado);
+}
+
+.menu-links .link-login {
+    padding: 0.45rem 1.2rem;
+    border: 1px solid var(--dourado);
+    border-radius: 20px;
+    color: var(--texto);
+}
+
+.menu-links .link-login:hover,
+.menu-links .link-login.ativo {
+    background-color: var(--dourado);
+    color: var(--branco);
+}
+
+/* LAYOUT PRINCIPAL */
+
+.login-container {
+    display: grid;
+    grid-template-columns: 44% 56%;
+    min-height: calc(100vh - 60px);
+}
+
+/* LADO DA IMAGEM */
+
+.login-imagem {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+    background-color: var(--bege);
+}
+
+.login-imagem img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.imagem-texto {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 20px 10%;
+    text-align: center;
+    color: var(--branco);
+    background: linear-gradient(transparent, rgba(70, 45, 30, 0.45));
+}
+
+.imagem-texto h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+    font-weight: 400;
+    letter-spacing: 5px;
+}
+
+.imagem-texto p {
+    margin-top: 8px;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+/* LADO DO FORMULÁRIO */
+
+.login-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: var(--champagne);
+}
+
+.login-formulario {
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+}
+
+.login-formulario h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--taupe);
+}
+
+.descricao {
+    margin: 8px 0 30px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* CAMPOS DE ENTRADA */
+
+.grupo-campo {
+    margin-bottom: 14px;
+    text-align: left;
+}
+
+.grupo-campo label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--texto);
+}
+
+.campo {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 12px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background-color: var(--branco);
+    transition: border-color 0.25s;
+}
+
+.campo:focus-within {
+    border-color: var(--dourado);
+}
+
+.campo input {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    color: var(--texto);
+}
+
+.campo input::placeholder {
+    color: #A69C91;
+}
+
+.icone {
+    color: #B8AA98;
+    font-size: 16px;
+}
+
+.mostrar-senha {
+    border: none;
+    background: transparent;
+    color: #A69C91;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* ESQUECEU A SENHA */
+
+.esqueceu-senha {
+    display: block;
+    margin: 10px 0 20px;
+    text-align: right;
+    color: var(--taupe);
+    font-size: 11px;
+    text-decoration: none;
+}
+
+/* BOTÃO ENTRAR */
+
+.botao-entrar {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--dourado);
+    color: var(--branco);
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-entrar:hover {
+    background-color: #AD8D54;
+    transform: translateY(-2px);
+}
+
+.feedback {
+    min-height: 18px;
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    color: #5C7A52;
+}
+
+/* DIVISOR */
+
+.divisor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 22px 0 12px;
+}
+
+.divisor span {
+    flex: 1;
+    height: 1px;
+    background-color: #C9BBAA;
+}
+
+.divisor p {
+    margin: 0;
+    font-size: 12px;
+    text-transform: lowercase;
+}
+
+/* GOOGLE */
+
+.google {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.google:hover {
+    transform: scale(1.08);
+}
+
+.google span {
+    font-size: 25px;
+    font-weight: 600;
+    color: #4285F4;
+}
+
+/* CADASTRO */
+
+.cadastro {
+    margin-top: 15px;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+}
+
+.cadastro a {
+    color: var(--texto);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cadastro a:hover,
+.esqueceu-senha:hover {
+    text-decoration: underline;
+}
+
+/* RODAPÉ (IGUAL AO CADASTRO) */
+
+.rodape-site {
+    padding: 1.5rem;
+    border-top: 1px solid var(--borda);
+    background-color: var(--branco);
+    text-align: center;
+    color: var(--taupe);
+}
+
+.rodape-site span {
+    font-size: 1.3rem;
+    color: var(--dourado);
+}
+
+.rodape-site p {
+    margin-top: 0.3rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+    .login-container {
+        grid-template-columns: 1fr;
+    }
+
+    .login-imagem {
+        min-height: 280px;
+    }
+
+    .imagem-texto {
+        padding-bottom: 16px;
+    }
+
+    .imagem-texto h1 {
+        font-size: 28px;
+    }
+
+    .login-conteudo {
+        padding: 35px 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    .topo-site {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .menu-links {
+        gap: 1rem;
+    }
+
+    .login-formulario h2 {
+        font-size: 27px;
+    }
+
+    .imagem-texto p {
+        font-size: 10px;
+    }
+}

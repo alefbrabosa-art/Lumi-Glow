@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumi Glow · Gestão da clínica</title>
+  <meta name="theme-color" content="#F8F2EC">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../funcionalidades/Styles.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO LIMPO -->
+  <header class="topo-site">
+    <div class="topo-esquerda">
+      <button type="button" class="hamb" id="btnMenu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuLateral">☰</button>
+      <a href="../index.html" class="topo-marca" aria-label="Página inicial Lumi Glow">
+        <span>✧</span>
+        <strong>LUMI GLOW</strong>
+      </a>
+    </div>
+  </header>
+
+  <!-- SISTEMA -->
+  <div id="app" class="app" hidden>
+    <div class="scrim" id="scrim" hidden></div>
+
+    <aside class="sidebar" id="menuLateral">
+      <div class="marca">
+        <span class="estrela" aria-hidden="true">✧</span>
+        <h2>LUMI GLOW</h2>
+        <small>Sistema de gestão estética</small>
+      </div>
+
+      <nav class="menu-nav" aria-label="Menu do sistema">
+        <button type="button" class="menu-btn" data-secao="secaoDashboard">
+          <svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+          Início
+        </button>
+
+        <button type="button" class="menu-btn" data-secao="secaoAgenda">
+          <svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18M8 13h2M14 13h2M8 17h2M14 17h2"/></svg>
+          Agenda
+        </button>
+
+        <button type="button" class="menu-btn" data-secao="secaoClientes">
+          <svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+          Clientes
+        </button>
+
+        <button type="button" class="menu-btn" data-secao="secaoProcedimentos">
+          <svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="8.5" width="7" height="7" rx="1.5" transform="rotate(-45 7 12)"/><rect x="11.5" y="8.5" width="7" height="7" rx="1.5" transform="rotate(-45 15 12)"/></svg>
+          Procedimentos
+        </button>
+
+        <button type="button" class="menu-btn" data-secao="secaoSessoes">
+          <svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v1"/><rect x="5" y="9" width="16" height="11" rx="2"/></svg>
+          Sessões
+        </button>
+
+        <button type="button" class="menu-btn" data-secao="secaoFinanceiro">
+          <svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2h-5a3 3 0 0 0 0 6h5v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><rect x="15" y="9" width="6" height="6" rx="1.5"/><circle cx="17.5" cy="12" r="0.8" fill="currentColor"/></svg>
+          Financeiro
+        </button>
+
+        <button type="button" class="menu-btn" data-secao="secaoRelatorios">
+          <svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M8 16v-4M12 16V9M16 16v-2M18 3v6M15 6h6"/></svg>
+          Relatórios
+        </button>
+
+        <button type="button" class="menu-btn" data-secao="secaoConfig">
+          <svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.6.77 1.02 1.42 1.1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Configurações
+        </button>
+      </nav>
+
+      <!-- PERFIL CLICÁVEL PARA EDIÇÃO -->
+      <button type="button" class="usuario" id="btnPerfil" title="Editar perfil de administrador" aria-label="Editar perfil de administrador">
+        <span class="avatar" id="perfilAvatarSidebar" aria-hidden="true">✧</span>
+        <div class="usuario-info">
+          <strong id="perfilNomeExibicao">Lumi Glow</strong>
+          <small id="perfilCargoExibicao">Administradora</small>
+        </div>
+        <span class="usuario-editar" aria-hidden="true">✎</span>
+      </button>
+
+      <button type="button" class="btn btn-perigo" id="btnSair">Sair</button>
+    </aside>
+
+    <main class="conteudo">
+      <div class="conteudo-interno">
+
+        <!-- INÍCIO (PAINEL PRINCIPAL) -->
+        <section id="secaoDashboard" class="sec" hidden>
+          <div class="saudacao">
+            <span class="estrela" aria-hidden="true">✧</span>
+            <div>
+              <h1>Olá, Lumi Glow!</h1>
+              <p class="dica">Aqui está um resumo da sua clínica hoje.</p>
+              <small id="dataHoje"></small>
+            </div>
+          </div>
+
+          <!-- 4 CARDS RESUMO -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-label">Agendamentos hoje</span>
+              <div class="kpi-valor-row">
+                <strong id="kpiAgHoje">0</strong>
+                <svg class="kpi-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18M8 13h2M12 13h2M16 13h0M8 17h2M12 17h2"/></svg>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <span class="kpi-label">Clientes ativos</span>
+              <div class="kpi-valor-row">
+                <strong id="kpiClientesAtivos">0</strong>
+                <svg class="kpi-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M3 19a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 19a5 5 0 0 1 5-4"/></svg>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <span class="kpi-label">Procedimentos do mês</span>
+              <div class="kpi-valor-row">
+                <strong id="kpiProcMes">0</strong>
+                <svg class="kpi-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4c2.5 3 3.5 6 0 10-3.5-4-2.5-7 0-10z"/><path d="M6 10c3 0 5.5 1.5 6 5-3.5 0-6-2-6-5z"/><path d="M18 10c-3 0-5.5 1.5-6 5 3.5 0 6-2 6-5z"/><path d="M4 18c4 1 12 1 16 0"/></svg>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <span class="kpi-label">Receita do mês</span>
+              <div class="kpi-valor-row">
+                <strong id="kpiReceitaMes">R$ 0,00</strong>
+                <svg class="kpi-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19v-5M12 19V9M18 19V5"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRÓXIMOS ATENDIMENTOS + ATALHOS -->
+          <div class="dashboard-cols">
+            <div class="card card-proximos">
+              <div class="card-topo">
+                <h3>Próximos atendimentos</h3>
+                <button type="button" class="link-ver-todos" id="btnVerTodosAg">ver todos</button>
+              </div>
+              <ul class="lista-proximos" id="listaProximos"></ul>
+            </div>
+
+            <div class="card card-atalhos">
+              <h3>Atalhos</h3>
+              <div class="atalhos-lista">
+                <button type="button" class="atalho-btn" id="atalhoNovoAg">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18M8 13h2M12 13h2M8 17h2M12 17h2"/></svg>
+                  <span>Novo agendamento</span>
+                </button>
+
+                <button type="button" class="atalho-btn" id="atalhoRegProc">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
+                  <span>Registrar procedimento</span>
+                </button>
+
+                <button type="button" class="atalho-btn" id="atalhoLancarFin">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2h-5a3 3 0 0 0 0 6h5v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><rect x="15" y="9" width="6" height="6" rx="1.5"/></svg>
+                  <span>Lançar despesa/receita</span>
+                </button>
+
+                <button type="button" class="atalho-btn" id="atalhoCadCliente">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="8" r="3.5"/><path d="M4 19a6 6 0 0 1 12 0"/><path d="M19 8v6M16 11h6"/></svg>
+                  <span>Cadastrar cliente</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- MENSAGENS AUTOMÁTICAS PARA ENVIAR HOJE -->
+          <div class="card">
+            <h3>Mensagens para enviar hoje</h3>
+            <ul class="lista" id="listaTarefas"></ul>
+          </div>
+        </section>
+
+        <!-- AGENDA -->
+        <section id="secaoAgenda" class="sec" hidden>
+          <h1>Agenda</h1>
+          <div class="barra-semana">
+            <button type="button" class="btn btn-neutro" id="btnAnt" aria-label="Semana anterior">◀</button>
+            <button type="button" class="btn btn-neutro" id="btnHoje">Hoje</button>
+            <strong id="tituloSemana"></strong>
+            <button type="button" class="btn btn-neutro" id="btnProx" aria-label="Próxima semana">▶</button>
+            <select id="filtroProf" aria-label="Profissional"></select>
+          </div>
+          <p class="dica">Toque num horário livre para agendar ou num agendamento para editar, remarcar ou cancelar.</p>
+          <div class="dias" id="containerDias"></div>
+        </section>
+
+        <!-- CLIENTES -->
+        <section id="secaoClientes" class="sec" hidden>
+          <h1>Clientes</h1>
+          <div class="card">
+            <h3 id="cTitulo">Novo cadastro</h3>
+            <form id="formCliente">
+              <input type="hidden" id="cId">
+              <div class="grade-form">
+                <div class="campo"><label for="cNome">Nome</label><input id="cNome" required></div>
+                <div class="campo"><label for="cTel">Telefone / WhatsApp</label><input id="cTel" data-tel type="tel" placeholder="(11) 99999-9999" required></div>
+                <div class="campo"><label for="cEmail">E-mail</label><input id="cEmail" type="email"></div>
+                <div class="campo"><label for="cNasc">Nascimento</label><input id="cNasc" type="date"></div>
+              </div>
+              <div class="campo"><label for="cObs">Observações (alergias, preferências)</label><textarea id="cObs" rows="2"></textarea></div>
+              <fieldset>
+                <legend>Anamnese (dado sensível de saúde)</legend>
+                <div class="grade-form">
+                  <div class="campo"><label for="cAlergias">Alergias</label><input id="cAlergias"></div>
+                  <div class="campo"><label for="cMeds">Medicamentos em uso</label><input id="cMeds"></div>
+                </div>
+                <div class="campo"><label for="cHist">Histórico de saúde relevante</label><textarea id="cHist" rows="2"></textarea></div>
+                <label class="check"><input type="checkbox" id="cGest"> Gestante ou lactante</label>
+                <label class="check"><input type="checkbox" id="cTermo"> Termo de consentimento do procedimento assinado</label>
+              </fieldset>
+              <div class="campo"><label for="cInd">Indicada por</label><select id="cInd"></select></div>
+              <label class="check"><input type="checkbox" id="cFoto"> Autoriza o registro de fotos de antes e depois.</label>
+              <label class="check"><input type="checkbox" id="cConsent" required> A cliente autorizou o uso dos seus dados e o contato por WhatsApp (LGPD).</label>
+              <p class="erro" id="cErro" role="alert"></p>
+              <button type="submit" class="btn btn-ok" id="cSalvar">Salvar cliente</button>
+              <button type="button" class="btn btn-neutro" id="cCancelar" hidden>Cancelar edição</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Lista de clientes</h3>
+            <div class="campo"><label for="busca">Buscar por nome ou telefone</label><input id="busca" type="search" placeholder="Digite o nome ou telefone..."></div>
+            <div class="tabela-wrap">
+              <table>
+                <thead><tr><th>Nome</th><th>Telefone</th><th>Consentimento</th><th>Atendimentos</th><th>Último procedimento</th><th>Ações</th></tr></thead>
+                <tbody id="tabelaClientesBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Campanha segmentada</h3>
+            <p class="dica">Só entram clientes que autorizaram o contato.</p>
+            <form id="formCampanha">
+              <div class="grade-form">
+                <div class="campo"><label for="cpServico">Já fez o procedimento</label><select id="cpServico"></select></div>
+                <div class="campo"><label for="cpDias">Sem vir há (dias; 0 = ignorar)</label><input id="cpDias" type="number" min="0" value="0"></div>
+              </div>
+              <div class="campo"><label for="cpMsg">Mensagem (use {nome})</label><textarea id="cpMsg" rows="2">Oi, {nome}! Temos uma condição especial na Lumi Glow esta semana. Quer saber mais?</textarea></div>
+              <button type="submit" class="btn btn-ok">Gerar lista</button>
+            </form>
+            <ul class="lista" id="listaCampanha"></ul>
+          </div>
+        </section>
+
+        <!-- PROCEDIMENTOS -->
+        <section id="secaoProcedimentos" class="sec" hidden>
+          <h1>Procedimentos</h1>
+
+          <div class="card">
+            <h3>Registrar novo procedimento</h3>
+            <form id="formServico" class="grade-form">
+              <div class="campo"><label for="sNome">Nome do procedimento</label><input id="sNome" placeholder="Ex.: Limpeza de Pele Profunda" required></div>
+              <div class="campo"><label for="sDur">Duração (min)</label><input id="sDur" type="number" min="5" step="5" value="60" required></div>
+              <div class="campo"><label for="sPreco">Preço (R$)</label><input id="sPreco" type="number" min="0" step="0.01" value="0" required></div>
+              <div class="campo"><label for="sCuidados">Cuidados pós (opcional)</label><input id="sCuidados" placeholder="Ex: evitar sol por 48h"></div>
+              <div class="campo"><label for="sProduto">Produto consumido (opcional)</label><select id="sProduto"></select></div>
+              <div class="campo"><label for="sConsumo">Quantidade por sessão</label><input id="sConsumo" type="number" min="0" step="0.1" value="1"></div>
+              <div class="campo campo-botao"><button type="submit" class="btn btn-ok">Salvar procedimento</button></div>
+            </form>
+            <p class="erro" id="sErro" role="alert"></p>
+          </div>
+
+          <div class="card">
+            <h3>Catálogo de procedimentos</h3>
+            <ul class="lista" id="listaServicos"></ul>
+          </div>
+
+          <div class="card">
+            <h3>Estoque de produtos</h3>
+            <form id="formProduto" class="grade-form">
+              <div class="campo"><label for="prNome">Produto</label><input id="prNome" required></div>
+              <div class="campo"><label for="prQtd">Quantidade atual</label><input id="prQtd" type="number" min="0" step="0.1" value="0" required></div>
+              <div class="campo"><label for="prMin">Avisar quando restar até</label><input id="prMin" type="number" min="0" step="0.1" value="1" required></div>
+              <div class="campo campo-botao"><label>&nbsp;</label><button type="submit" class="btn btn-ok">Adicionar produto</button></div>
+            </form>
+            <ul class="lista" id="listaProdutos"></ul>
+          </div>
+        </section>
+
+        <!-- SESSÕES -->
+        <section id="secaoSessoes" class="sec" hidden>
+          <h1>Sessões</h1>
+
+          <div class="card">
+            <h3>Pacotes de sessões</h3>
+            <form id="formPacote">
+              <div class="grade-form">
+                <div class="campo"><label for="pkCliente">Cliente</label><select id="pkCliente" required></select></div>
+                <div class="campo"><label for="pkServico">Procedimento</label><select id="pkServico" required></select></div>
+                <div class="campo"><label for="pkTotal">Nº de sessões</label><input id="pkTotal" type="number" min="1" value="10" required></div>
+                <div class="campo"><label for="pkValidade">Validade</label><input id="pkValidade" type="date" required></div>
+                <div class="campo"><label for="pkValor">Valor do pacote (R$)</label><input id="pkValor" type="number" min="0" step="0.01" value="0" required></div>
+                <div class="campo"><label for="pkPago">Valor pago (R$)</label><input id="pkPago" type="number" min="0" step="0.01" value="0" required></div>
+              </div>
+              <p class="erro" id="pkErro" role="alert"></p>
+              <button type="submit" class="btn btn-ok">Vender pacote</button>
+            </form>
+            <ul class="lista" id="listaPacotes"></ul>
+          </div>
+
+          <div class="card">
+            <h3>Sessões realizadas recentemente</h3>
+            <ul class="lista" id="listaSessoesRecentes"></ul>
+          </div>
+
+          <div class="card">
+            <h3>Lista de espera</h3>
+            <form id="formEspera">
+              <div class="grade-form">
+                <div class="campo"><label for="esCliente">Cliente</label><select id="esCliente" required></select></div>
+                <div class="campo"><label for="esServico">Procedimento</label><select id="esServico" required></select></div>
+              </div>
+              <div class="campo"><label for="esObs">Período preferido</label><input id="esObs" placeholder="Ex: manhãs de terça e quinta"></div>
+              <button type="submit" class="btn btn-ok">Colocar na espera</button>
+            </form>
+            <ul class="lista" id="listaEspera"></ul>
+          </div>
+        </section>
+
+        <!-- FINANCEIRO -->
+        <section id="secaoFinanceiro" class="sec" hidden>
+          <h1>Financeiro</h1>
+
+          <div class="cards" id="finCards"></div>
+
+          <div class="card">
+            <h3>Lançar despesa ou receita</h3>
+            <form id="formLancamento">
+              <div class="grade-form">
+                <div class="campo">
+                  <label for="finTipo">Tipo de lançamento</label>
+                  <select id="finTipo">
+                    <option value="receita">Receita (+)</option>
+                    <option value="despesa">Despesa (−)</option>
+                  </select>
+                </div>
+                <div class="campo"><label for="finDesc">Descrição</label><input id="finDesc" placeholder="Ex.: Compra de insumos / Venda de creme" required></div>
+                <div class="campo"><label for="finValor">Valor (R$)</label><input id="finValor" type="number" min="0.01" step="0.01" required></div>
+                <div class="campo"><label for="finData">Data</label><input id="finData" type="date" required></div>
+                <div class="campo">
+                  <label for="finForma">Forma de pagamento</label>
+                  <select id="finForma">
+                    <option>Pix</option>
+                    <option>Dinheiro</option>
+                    <option>Cartão</option>
+                    <option>Transferência</option>
+                    <option>Outro</option>
+                  </select>
+                </div>
+              </div>
+              <p class="erro" id="finErro" role="alert"></p>
+              <button type="submit" class="btn btn-ok">Registrar lançamento</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Valores a receber de clientes</h3>
+            <ul class="lista" id="listaReceber"></ul>
+          </div>
+
+          <div class="card">
+            <h3>Lançamentos manuais registrados</h3>
+            <ul class="lista" id="listaLancamentos"></ul>
+          </div>
+        </section>
+
+        <!-- RELATÓRIOS -->
+        <section id="secaoRelatorios" class="sec" hidden>
+          <h1>Relatórios</h1>
+
+          <div class="cards" id="relCards"></div>
+
+          <div class="dashboard-cols">
+            <div class="card">
+              <h3>Procedimentos mais agendados</h3>
+              <ul class="lista" id="topProc"></ul>
+            </div>
+
+            <div class="card">
+              <h3>Faturamento do mês por procedimento</h3>
+              <ul class="lista" id="fatProc"></ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONFIGURAÇÕES -->
+        <section id="secaoConfig" class="sec" hidden>
+          <h1>Configurações</h1>
+          <p class="aviso">Os dados ficam salvos só neste navegador. Faça backup com frequência; para usar em mais de um aparelho será preciso um servidor.</p>
+
+          <div class="card">
+            <h3>Horário de atendimento</h3>
+            <form id="formHorarios">
+              <div class="grade-form">
+                <div class="campo"><label for="cfgInicio">Abre às</label><input id="cfgInicio" type="time" required></div>
+                <div class="campo"><label for="cfgFim">Fecha às</label><input id="cfgFim" type="time" required></div>
+                <div class="campo"><label for="cfgInter">Intervalo da agenda</label>
+                  <select id="cfgInter"><option value="15">15 min</option><option value="30">30 min</option><option value="60">60 min</option></select>
+                </div>
+              </div>
+              <fieldset><legend>Dias de atendimento</legend><div id="cfgDias" class="dias-check"></div></fieldset>
+              <p class="erro" id="hErro" role="alert"></p>
+              <button type="submit" class="btn btn-ok">Salvar horários</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Profissionais</h3>
+            <form id="formProf" class="grade-form">
+              <div class="campo"><label for="pNome">Nome</label><input id="pNome" required></div>
+              <div class="campo campo-botao"><label>&nbsp;</label><button type="submit" class="btn btn-ok">Adicionar</button></div>
+            </form>
+            <p class="erro" id="pErro" role="alert"></p>
+            <ul class="lista" id="listaProf"></ul>
+          </div>
+
+          <div class="card">
+            <h3>Bloqueios da agenda (folgas, feriados, almoço)</h3>
+            <form id="formBloqueio">
+              <div class="grade-form">
+                <div class="campo"><label for="bData">Data</label><input id="bData" type="date" required></div>
+                <div class="campo"><label for="bMotivo">Motivo</label><input id="bMotivo" placeholder="Ex: Feriado"></div>
+                <div class="campo"><label for="bIni">De</label><input id="bIni" type="time" required></div>
+                <div class="campo"><label for="bFim">Até</label><input id="bFim" type="time" required></div>
+              </div>
+              <label class="check"><input type="checkbox" id="bDia"> Dia inteiro</label>
+              <p class="erro" id="bErro" role="alert"></p>
+              <button type="submit" class="btn btn-ok">Bloquear</button>
+            </form>
+            <ul class="lista" id="listaBloqueios"></ul>
+          </div>
+
+          <div class="card">
+            <h3>Mensagens automáticas</h3>
+            <p class="dica">Use {nome}, {servico}, {data}, {hora} e {cuidados} (cuidados pós do procedimento).</p>
+            <form id="formMsgs"><div id="cfgMsgs"></div><button type="submit" class="btn btn-ok">Salvar mensagens</button></form>
+          </div>
+
+          <div class="card">
+            <h3>Backup</h3>
+            <p class="dica">O backup não inclui as fotos: elas ficam guardadas à parte neste navegador.</p>
+            <button type="button" class="btn btn-neutro" id="btnExportar">Baixar backup</button>
+            <label class="btn btn-neutro">Restaurar backup<input type="file" id="inputImportar" accept="application/json" hidden></label>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- RODAPÉ -->
+  <footer class="rodape-site">
+    <span>✧</span>
+    <p>Lumi Glow — Cuidando de cada detalhe da sua clínica.</p>
+  </footer>
+
+  <!-- MODAL DE AGENDAMENTO -->
+  <dialog id="modal">
+    <form id="formAg">
+      <h3 id="mTitulo"></h3>
+      <div class="campo"><label for="mCliente">Cliente</label><select id="mCliente"></select></div>
+      <p class="aviso" id="mAlerta" hidden></p>
+      <div id="grupoNovo" hidden>
+        <div class="campo"><label for="mNome">Nome do novo cliente</label><input id="mNome"></div>
+        <div class="campo"><label for="mTel">Telefone</label><input id="mTel" data-tel type="tel" placeholder="(11) 99999-9999"></div>
+      </div>
+      <div class="campo"><label for="mServico">Procedimento</label><select id="mServico"></select></div>
+      <div class="campo"><label for="mProf">Profissional</label><select id="mProf"></select></div>
+      <div class="campo" id="grupoPacote" hidden><label for="mPacote">Usar pacote</label><select id="mPacote"></select></div>
+      <div class="grade-form">
+        <div class="campo"><label for="mData">Data</label><input id="mData" type="date" required></div>
+        <div class="campo"><label for="mHora">Hora</label><input id="mHora" type="time" required></div>
+      </div>
+      <div class="campo"><label for="mObs">Observações</label><input id="mObs"></div>
+      <div class="campo" id="grupoRepetir"><label for="mRepetir">Repetir toda semana por quantas semanas? (1 = não repetir)</label><input id="mRepetir" type="number" min="1" max="52" value="1"></div>
+      <div id="mEdicao" hidden>
+        <div class="campo"><label for="mStatus">Situação</label>
+          <select id="mStatus"><option value="agendado">Agendado</option><option value="confirmado">Confirmado</option><option value="concluido">Concluído</option><option value="faltou">Faltou</option></select>
+        </div>
+        <div class="grade-form">
+          <div class="campo"><label for="mValor">Valor cobrado (R$)</label><input id="mValor" type="number" min="0" step="0.01"></div>
+          <div class="campo"><label for="mPago">Valor pago (R$)</label><input id="mPago" type="number" min="0" step="0.01"></div>
+        </div>
+        <div class="campo"><label for="mForma">Forma de pagamento</label>
+          <select id="mForma"><option value="">—</option><option>Pix</option><option>Dinheiro</option><option>Cartão</option><option>Outro</option></select>
+        </div>
+        <div class="campo"><label for="mEvol">Evolução do atendimento (produtos, área tratada, reação)</label><textarea id="mEvol" rows="3"></textarea></div>
+        <div class="campo"><label for="mMotivo">Motivo (se for cancelar)</label><input id="mMotivo"></div>
+        <button type="button" class="btn btn-perigo" id="btnCancelarAg">Cancelar agendamento</button>
+        <a class="btn btn-neutro" id="btnLembrete" target="_blank" rel="noopener">Lembrete no WhatsApp</a>
+      </div>
+      <p class="erro" id="mErro" role="alert"></p>
+      <div class="modal-botoes">
+        <button type="button" class="btn btn-neutro" id="btnFechar">Fechar</button>
+        <button type="submit" class="btn btn-ok">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- FICHA DA CLIENTE -->
+  <dialog id="modalFicha">
+    <h3 id="fTitulo"></h3>
+    <div id="fCorpo"></div>
+    <div class="modal-botoes"><button type="button" class="btn btn-neutro" id="btnFecharFicha">Fechar</button></div>
+  </dialog>
+
+  <!-- MODAL DE PERFIL DO ADMINISTRADOR -->
+  <dialog id="modalPerfil">
+    <form id="formPerfil">
+      <h3>Perfil do Administrador</h3>
+
+      <div class="perfil-foto-box">
+        <div class="perfil-preview" id="pfPreview" aria-hidden="true">✧</div>
+        <div class="perfil-foto-acoes">
+          <label class="btn btn-ok btn-mini">
+            Escolher foto
+            <input type="file" id="pfFoto" accept="image/*" hidden>
+          </label>
+          <button type="button" class="btn btn-neutro btn-mini" id="btnRemoverFoto" hidden>Remover foto</button>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="pfNome">Nome de exibição</label>
+        <input id="pfNome" placeholder="Ex.: Aylla Santos" required>
+      </div>
+      <div class="campo">
+        <label for="pfCargo">Cargo / Função</label>
+        <input id="pfCargo" placeholder="Ex.: Administradora" required>
+      </div>
+      <div class="campo">
+        <label for="pfUsuario">Usuário ou e-mail de acesso</label>
+        <input id="pfUsuario" required>
+      </div>
+      <div class="campo">
+        <label for="pfSenha">Nova senha (opcional · mín. 6 caracteres)</label>
+        <input id="pfSenha" type="password" placeholder="Deixe em branco para manter a atual">
+      </div>
+      <p class="erro" id="pfErro" role="alert"></p>
+      <div class="modal-botoes">
+        <button type="button" class="btn btn-neutro" id="btnFecharPerfil">Cancelar</button>
+        <button type="submit" class="btn btn-ok">Salvar perfil</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="../funcionalidades/App.js"></script>
+</body>
+</html>
