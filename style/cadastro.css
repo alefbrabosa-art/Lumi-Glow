@@ -1,0 +1,492 @@
+/* CORES E FONTES */
+
+:root {
+    --champagne: #F8F2EC;
+    --bege: #D7C2A7;
+    --dourado: #C9A96E;
+    --taupe: #8F7E6B;
+    --texto: #5C4D3C;
+    --branco: #FFFFFF;
+    --borda: #E9DED2;
+}
+
+/* RESET CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--champagne);
+    color: var(--taupe);
+    line-height: 1.5;
+}
+
+/* CABEÇALHO E NAVEGAÇÃO */
+
+.topo-site {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 2.5rem;
+    background-color: var(--branco);
+    border-bottom: 1px solid var(--borda);
+}
+
+.topo-marca {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: var(--texto);
+}
+
+.topo-marca span {
+    color: var(--dourado);
+    font-size: 1.25rem;
+}
+
+.menu-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.menu-links a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--taupe);
+    transition: color 0.25s;
+}
+
+.menu-links a:hover {
+    color: var(--dourado);
+}
+
+.menu-links .link-login {
+    padding: 0.45rem 1.2rem;
+    border: 1px solid var(--dourado);
+    border-radius: 20px;
+    color: var(--texto);
+}
+
+.menu-links .link-login:hover {
+    background-color: var(--dourado);
+    color: var(--branco);
+}
+
+/* LAYOUT PRINCIPAL (CSS GRID) */
+
+.cadastro-container {
+    display: grid;
+    grid-template-columns: 44% 56%;
+    min-height: calc(100vh - 60px);
+}
+
+/* LADO DA IMAGEM */
+
+.cadastro-imagem {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--bege);
+}
+
+.cadastro-imagem img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.imagem-texto {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem 1.25rem 10%;
+    text-align: center;
+    color: var(--branco);
+    background: linear-gradient(transparent, rgba(70, 45, 30, 0.45));
+}
+
+.imagem-texto h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 2.35rem;
+    font-weight: 400;
+    letter-spacing: 5px;
+}
+
+.imagem-texto p {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+}
+
+/* LADO DO FORMULÁRIO E LISTA */
+
+.cadastro-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem 2rem;
+    background-color: var(--champagne);
+}
+
+.cadastro-formulario {
+    width: 100%;
+    max-width: 440px;
+}
+
+.cadastro-formulario h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-align: center;
+    color: var(--taupe);
+}
+
+.descricao {
+    margin: 0.5rem 0 2rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.8px;
+    text-align: center;
+}
+
+/* GRUPOS E CAMPOS COM LABEL */
+
+.grupo-campo {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.grupo-campo label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--texto);
+}
+
+.campo {
+    display: flex;
+    align-items: center;
+    height: 46px;
+    padding: 0 0.75rem;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background-color: var(--branco);
+    transition: border-color 0.25s;
+}
+
+.campo:focus-within {
+    border-color: var(--dourado);
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    height: 100%;
+    padding: 0 0.6rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.82rem;
+    color: var(--texto);
+}
+
+.campo input::placeholder {
+    color: #A69C91;
+}
+
+.icone {
+    color: #B8AA98;
+    font-size: 0.95rem;
+}
+
+.mostrar-senha {
+    border: none;
+    background: transparent;
+    color: #A69C91;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* BOTÃO CADASTRAR */
+
+.botao-cadastrar {
+    width: 100%;
+    height: 48px;
+    margin-top: 0.75rem;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--dourado);
+    color: var(--branco);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-cadastrar:hover {
+    background-color: #AD8D54;
+    transform: translateY(-2px);
+}
+
+.feedback {
+    min-height: 1.2rem;
+    margin-top: 0.75rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-align: center;
+    color: #5C7A52;
+}
+
+.voltar-login {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
+    text-align: center;
+}
+
+.voltar-login a {
+    color: var(--texto);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.voltar-login a:hover {
+    text-decoration: underline;
+}
+
+/* SEÇÃO DINÂMICA DE CADASTRADOS */
+
+.lista-cadastrados {
+    width: 100%;
+    max-width: 680px;
+    padding-top: 2rem;
+    border-top: 1px solid var(--borda);
+}
+
+.lista-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.lista-cabecalho h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+    color: var(--texto);
+}
+
+.subtitulo-lista {
+    font-size: 0.78rem;
+    color: var(--taupe);
+}
+
+.contador-badge {
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--texto);
+    white-space: nowrap;
+}
+
+/* FILTROS EM TEMPO REAL */
+
+.barra-filtros {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.filtro-item label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--texto);
+}
+
+.filtro-item input,
+.filtro-item select {
+    width: 100%;
+    height: 42px;
+    padding: 0 0.85rem;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background-color: var(--branco);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8rem;
+    color: var(--texto);
+    outline: none;
+}
+
+.filtro-item input:focus,
+.filtro-item select:focus {
+    border-color: var(--dourado);
+}
+
+/* CARDS DINÂMICOS */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.usuario-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.65rem;
+    padding: 1.2rem;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    background-color: var(--branco);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.usuario-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(92, 77, 60, 0.08);
+}
+
+.card-topo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.usuario-card h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--texto);
+}
+
+.tag-area {
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    background-color: var(--champagne);
+    border: 1px solid var(--bege);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--texto);
+    white-space: nowrap;
+}
+
+.card-info {
+    font-size: 0.78rem;
+    color: var(--taupe);
+    word-break: break-word;
+}
+
+.card-info strong {
+    color: var(--texto);
+    font-weight: 500;
+}
+
+.mensagem-vazia {
+    grid-column: 1 / -1;
+    padding: 1.5rem;
+    border: 1px dashed var(--bege);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--taupe);
+}
+
+/* RODAPÉ */
+
+.rodape-site {
+    padding: 1.5rem;
+    border-top: 1px solid var(--borda);
+    background-color: var(--branco);
+    text-align: center;
+    color: var(--taupe);
+}
+
+.rodape-site span {
+    font-size: 1.3rem;
+    color: var(--dourado);
+}
+
+.rodape-site p {
+    margin-top: 0.3rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
+}
+
+/* RESPONSIVIDADE (TABLETS E SMARTPHONES) */
+
+@media (max-width: 900px) {
+    .cadastro-container {
+        grid-template-columns: 1fr;
+    }
+
+    .cadastro-imagem {
+        position: relative;
+        height: 280px;
+    }
+
+    .imagem-texto {
+        padding-bottom: 1.25rem;
+    }
+
+    .imagem-texto h1 {
+        font-size: 1.85rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .topo-site {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .menu-links {
+        gap: 1rem;
+    }
+
+    .cadastro-conteudo {
+        padding: 2rem 1.25rem;
+    }
+
+    .barra-filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .lista-cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

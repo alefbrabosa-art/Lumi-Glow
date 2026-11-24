@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro | Lumi Glow</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style/cadastro.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO E NAVEGAÇÃO SEMÂNTICA -->
+    <header class="topo-site">
+        <div class="topo-marca">
+            <span>✧</span>
+            <strong>LUMI GLOW</strong>
+        </div>
+
+        <nav aria-label="Navegação principal">
+            <ul class="menu-links">
+                <li><a href="#secao-cadastro">Novo Cadastro</a></li>
+                <li><a href="#secao-lista">Equipe Cadastrada</a></li>
+                <li><a href="login.html" class="link-login">Entrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cadastro-container">
+
+        <!-- LADO DA IMAGEM -->
+        <section class="cadastro-imagem" aria-label="Apresentação visual Lumi Glow">
+            <img src="images/glow_login.jfif" alt="Ambiente e identidade visual Lumi Glow">
+
+            <div class="imagem-texto">
+                <h1>LUMI GLOW</h1>
+                <p>SISTEMA DE GESTÃO ESTÉTICA</p>
+            </div>
+        </section>
+
+        <!-- LADO DO FORMULÁRIO E LISTAGEM DINÂMICA -->
+        <section class="cadastro-conteudo">
+
+            <!-- FORMULÁRIO DE CADASTRO -->
+            <div class="cadastro-formulario" id="secao-cadastro">
+                <h2>Criar Conta</h2>
+                <p class="descricao">Cadastre profissionais e gestores da sua clínica.</p>
+
+                <form id="formCadastro" action="#" method="post">
+
+                    <div class="grupo-campo">
+                        <label for="nome">Nome completo</label>
+                        <div class="campo">
+                            <span class="icone" aria-hidden="true">♙</span>
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Ex.: Dra. Camila Almeida"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="email">E-mail profissional</label>
+                        <div class="campo">
+                            <span class="icone" aria-hidden="true">✉</span>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="camila@lumiglow.com.br"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="clinica">Nome da clínica ou unidade</label>
+                        <div class="campo">
+                            <span class="icone" aria-hidden="true">✧</span>
+                            <input
+                                type="text"
+                                id="clinica"
+                                name="clinica"
+                                placeholder="Ex.: Lumi Glow Jardins"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="especialidade">Área de atuação</label>
+                        <div class="campo">
+                            <span class="icone" aria-hidden="true">❖</span>
+                            <select id="especialidade" name="especialidade" required>
+                                <option value="" disabled selected>Selecione uma especialidade</option>
+                                <option value="Estética Facial">Estética Facial</option>
+                                <option value="Estética Corporal">Estética Corporal</option>
+                                <option value="Harmonização">Harmonização</option>
+                                <option value="Gestão e Recepção">Gestão e Recepção</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="senha">Senha de acesso</label>
+                        <div class="campo">
+                            <span class="icone" aria-hidden="true">⚿</span>
+                            <input
+                                type="password"
+                                id="senha"
+                                name="senha"
+                                placeholder="Mínimo 6 caracteres"
+                                minlength="6"
+                                required
+                            >
+                            <button type="button" class="mostrar-senha" id="mostrarSenha" aria-label="Mostrar ou ocultar senha">
+                                ◉
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="botao-cadastrar">
+                        Concluir Cadastro
+                    </button>
+
+                    <p id="mensagemFeedback" class="feedback" role="status" aria-live="polite"></p>
+                </form>
+
+                <p class="voltar-login">
+                    Já possui uma conta?
+                    <a href="login.html">Faça login</a>
+                </p>
+            </div>
+
+            <!-- SEÇÃO DINÂMICA: PROFISSIONAIS CADASTRADOS + BUSCA/FILTRO -->
+            <section class="lista-cadastrados" id="secao-lista" aria-labelledby="titulo-lista">
+                <div class="lista-cabecalho">
+                    <div>
+                        <h3 id="titulo-lista">Profissionais Cadastrados</h3>
+                        <p class="subtitulo-lista">Visualize e filtre os acessos ativos em tempo real.</p>
+                    </div>
+                    <span id="contadorRegistros" class="contador-badge">0 cadastros</span>
+                </div>
+
+                <!-- CONTROLES DE BUSCA E FILTRO -->
+                <div class="barra-filtros">
+                    <div class="filtro-item">
+                        <label for="campoBusca">Buscar profissional ou clínica</label>
+                        <input
+                            type="search"
+                            id="campoBusca"
+                            placeholder="Digite nome, clínica ou e-mail..."
+                        >
+                    </div>
+
+                    <div class="filtro-item">
+                        <label for="filtroEspecialidade">Filtrar por área</label>
+                        <select id="filtroEspecialidade">
+                            <option value="">Todas as áreas</option>
+                            <option value="Estética Facial">Estética Facial</option>
+                            <option value="Estética Corporal">Estética Corporal</option>
+                            <option value="Harmonização">Harmonização</option>
+                            <option value="Gestão e Recepção">Gestão e Recepção</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- CONTAINER RENDERIZADO VIA JAVASCRIPT (.map + Destructuring) -->
+                <div id="cardsContainer" class="cards-grid"></div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ SEMÂNTICO -->
+    <footer class="rodape-site">
+        <span>✧</span>
+        <p>Lumi Glow — Cuidando de cada detalhe da sua clínica.</p>
+    </footer>
+
+    <script src="script/cadastro.js"></script>
+    <script>
+        const USERS_KEY = 'lumiglow:usuarios';
+        const sha = async s => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)))]
+            .map(b => b.toString(16).padStart(2, '0')).join('');
+
+        function getUsuarios() {
+            let lista = [];
+            try { lista = JSON.parse(localStorage.getItem(USERS_KEY) || '[]'); } catch { lista = []; }
+            if (!Array.isArray(lista)) lista = [];
+            const antigo = JSON.parse(localStorage.getItem('lumiglow:auth') || 'null');
+            if (antigo?.u && antigo?.hs && !lista.some(x => x.u.toLowerCase() === antigo.u.toLowerCase())) {
+                lista.push({ u: antigo.u, hs: antigo.hs, nome: antigo.u, cargo: 'Administradora', foto: '' });
+                localStorage.setItem(USERS_KEY, JSON.stringify(lista));
+            }
+            return lista;
+        }
+
+        document.getElementById('formCadastro').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const clinica = document.getElementById('clinica').value.trim();
+            const cargo = document.getElementById('especialidade').value || 'Colaboradora';
+            const s = document.getElementById('senha').value;
+            const feedback = document.getElementById('mensagemFeedback');
+
+            if (!nome || !email || !s) {
+                e.stopImmediatePropagation();
+                feedback.style.color = '#b42318';
+                feedback.textContent = 'Preencha todos os campos obrigatórios.';
+                return;
+            }
+            if (s.length < 6) {
+                e.stopImmediatePropagation();
+                feedback.style.color = '#b42318';
+                feedback.textContent = 'A senha precisa ter ao menos 6 caracteres.';
+                return;
+            }
+
+            const usuarios = getUsuarios();
+            if (usuarios.some(x => x.u.toLowerCase() === email.toLowerCase())) {
+                e.stopImmediatePropagation();
+                feedback.style.color = '#b42318';
+                feedback.textContent = 'Este e-mail já está cadastrado. Faça login ou use outro.';
+                return;
+            }
+
+            const hs = await sha(email + ':' + s);
+            usuarios.push({
+                u: email,
+                email,
+                hs,
+                nome,
+                clinica,
+                cargo,
+                foto: ''
+            });
+            localStorage.setItem(USERS_KEY, JSON.stringify(usuarios));
+
+            feedback.style.color = '#15803d';
+            feedback.textContent = 'Cadastro concluído! Entrando no sistema...';
+
+            sessionStorage.setItem('lumiglow:sessao', '1');
+            sessionStorage.setItem('lumiglow:usuarioNome', email);
+            window.location.href = 'funcionalidades/sistema.html';
+        }, true);
+    </script>
+
+</body>
+</html>

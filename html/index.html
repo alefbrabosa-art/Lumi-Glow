@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lumi Glow: sistema de gestão para clínicas de estética.">
+    <title>Lumi Glow | Sistema de Gestão Estética</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+    <!-- Cabeçalho igual ao de Login e Cadastro -->
+    <header class="topo-site">
+        <a href="index.html" class="topo-marca" aria-label="Página inicial Lumi Glow">
+            <span>✧</span>
+            <strong>LUMI GLOW</strong>
+        </a>
+
+        <nav aria-label="Navegação principal">
+            <ul class="menu-links">
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#funcionalidades">Funcionalidades</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="cadastro.html">Cadastrar</a></li>
+                <li><a href="login.html" class="link-login">Entrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Logo e banner -->
+    <section class="banner" aria-label="Apresentação Lumi Glow">
+        <img src="images/logo_LG_branca.png" alt="Logo Lumi Glow" class="logo-banner">
+        <img src="images/lumi_glow_texto_branco.png" alt="Lumi Glow" class="texto-banner">
+    </section>
+
+    <!-- Conteúdo principal -->
+    <main class="conteudo">
+
+        <section id="sobre" class="secao secao-sobre">
+            <div class="sobre-bloco">
+                <h2>Beleza também é organização.</h2>
+
+                <p>
+                    Lumi Glow é um sistema de gestão para clínicas de estética,
+                    desenvolvido para simplificar o seu dia a dia e valorizar
+                    o que realmente importa: o cuidado com cada cliente.
+                </p>
+
+                <h2 class="espaco-topo">Feito para quem cuida...</h2>
+
+                <p>
+                    Agenda, clientes, procedimentos e finanças em um só lugar,
+                    de forma simples e elegante.
+                </p>
+
+                <a href="cadastro.html" class="botao">Criar conta</a>
+            </div>
+        </section>
+
+        <section id="funcionalidades" class="secao">
+            <h2 class="titulo-secao">Tudo o que você precisa.</h2>
+            <p class="subtitulo">
+                Explore os recursos do sistema ou adicione novas funcionalidades abaixo.
+            </p>
+
+            <!-- Barra de busca integrada ao script.js -->
+            <div class="barra-busca">
+                <label for="busca-funcionalidade">Buscar funcionalidade</label>
+                <input
+                    type="search"
+                    id="busca-funcionalidade"
+                    placeholder="Filtrar por título, categoria ou descrição..."
+                >
+            </div>
+
+            <!-- Cards renderizados dinamicamente pelo script.js -->
+            <div class="cards"></div>
+
+            <!-- Formulário para adicionar novos cards em tempo real -->
+            <form id="form-funcionalidade" class="form-funcionalidade">
+                <h3>Adicionar nova funcionalidade</h3>
+
+                <div class="form-grid">
+                    <div class="campo-grupo">
+                        <label for="titulo">Título</label>
+                        <input
+                            type="text"
+                            id="titulo"
+                            name="titulo"
+                            placeholder="Ex.: Controle de Estoque"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" name="categoria" required>
+                            <option value="Atendimento">Atendimento</option>
+                            <option value="Gestão">Gestão</option>
+                            <option value="Financeiro">Financeiro</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-grupo campo-descricao">
+                        <label for="descricao">Descrição</label>
+                        <input
+                            type="text"
+                            id="descricao"
+                            name="descricao"
+                            placeholder="Descreva brevemente o recurso..."
+                            required
+                        >
+                    </div>
+                </div>
+
+                <button type="submit" class="botao">Adicionar Recurso</button>
+            </form>
+        </section>
+
+        <!-- Serviços e imagens -->
+        <section id="servicos" class="secao">
+            <h2 class="titulo-secao">Cuidado em cada detalhe.</h2>
+
+            <p class="subtitulo">
+                Gerencie todos os serviços da sua clínica em um só lugar.
+            </p>
+
+            <div class="servicos">
+
+                <figure class="servico">
+                    <img src="images/Tela_Inicio.png" alt="Tela de controle dos serviços">
+                    <figcaption class="subtitulo">Controle dos Serviços</figcaption>
+                </figure>
+
+                <figure class="servico">
+                    <img src="images/Tela_agenda.png" alt="Tela de agendamentos online">
+                    <figcaption class="subtitulo">Agendamentos Online</figcaption>
+                </figure>
+
+                <figure class="servico">
+                    <img src="images/Tela_cliente.png" alt="Tela de controle de clientes">
+                    <figcaption class="subtitulo">Controle de Clientes</figcaption>
+                </figure>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé igual ao de Login e Cadastro -->
+    <footer class="rodape-site">
+        <span>✧</span>
+        <p>Lumi Glow — Cuidando de cada detalhe da sua clínica.</p>
+    </footer>
+
+    <script src="script/script.js"></script>
+
+</body>
+</html>
